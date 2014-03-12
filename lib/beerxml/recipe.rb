@@ -49,10 +49,11 @@ class Beerxml::Recipe < Beerxml::Model
 
   def as_json
     super.merge({
-      fermentables: fermentables,
-      hops: hops,
-      miscs: miscs,
-      yeasts: yeasts
+      fermentables: fermentables.map(&:as_json),
+      hops: hops.map(&:as_json),
+      miscs: miscs.map(&:as_json),
+      yeasts: yeasts.map(&:as_json),
+      mash: mash.as_json
     })
   end
 

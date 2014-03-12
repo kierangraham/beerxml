@@ -20,4 +20,10 @@ class Beerxml::Mash < Beerxml::Model
   has n, :mash_steps
 
   belongs_to :recipe, required: false
+
+  def as_json
+    super.merge({
+      mash_steps: mash_steps.map(&:as_json)
+    })
+  end
 end
