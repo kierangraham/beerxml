@@ -47,6 +47,10 @@ class Beerxml::Recipe < Beerxml::Model
   # these are not used in the xml
   property :id, Serial
 
+  def to_json
+    as_json.to_json
+  end
+
   def as_json
     super.merge({
       fermentables: fermentables.map(&:as_json),
