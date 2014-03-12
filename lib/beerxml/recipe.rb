@@ -41,11 +41,20 @@ class Beerxml::Recipe < Beerxml::Model
   property :priming_sugar_equiv, Float
   property :keg_priming_factor, Float
   # has 1, :equipment
-  # has 1, :mash
+  has 1, :mash
   # validates_presence_of :mash, :if => proc { |t| t.type != 'Extract' }
 
   # these are not used in the xml
   property :id, Serial
+
+  def as_json
+    super.merge({
+      fermentables: fermentables,
+      hops: hops,
+      miscs: miscs,
+      yeasts: yeasts
+    })
+  end
 
   def tinseth
     Beerxml.round(hops.select { |h| h.use == 'Boil' }.inject(0) { |v, h| v + h.tinseth(calculate_og, batch_size) }, 1)

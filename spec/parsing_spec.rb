@@ -167,5 +167,39 @@ Examples: Bass Pale Ale, Fullers ESB, Samual Smith's Pale Ale
       ]
       recipe.fermentables.map(&:name).should == ['Pale Malt (2 Row) UK', 'Barley, Flaked', 'Black Barley (Stout)']
     end
+    it "should parse mashes" do
+      mash = check_parse(Beerxml::Mash, "mash", 1, {
+        :name => "Temperature Mash, 1 Step, Light Body",
+        :display_grain_temp => "72.0 F",
+        :display_sparge_temp => "168.0 F",
+        :display_tun_temp => "72.0",
+        :display_tun_weight => "0.00 lb",
+        :equip_adjust => false,
+        :grain_temp => 22.222222,
+        :notes => "Temperature mash for use when mashing in a brew pot over a heat source such as the stove.  Use heat to maintain desired temperature during the mash.",
+        :ph => 5.4,
+        :sparge_temp => 75.555556,
+        :tun_specific_heat => 0.12,
+        :tun_temp => 22.222222,
+        :tun_weight => 0.0
+      })
+    end
+    it "should parse mash step" do
+      step = check_parse(Beerxml::MashStep, "mash_step", 1, {
+        :decoction_amt => "0.00 qt",
+        :description => "Add 12.50 qt of water at 161.4 F",
+        :display_infuse_amt => "12.50 qt",
+        :display_step_temp => "DISPLAY_STEP_TEMP",
+        :end_temp => 65.555556,
+        :infuse_amount => 11.82948,
+        :infuse_temp => "161.4 F",
+        :name => "Saccharification",
+        :ramp_time => 15,
+        :step_temp => 65.555556,
+        :step_time => 75,
+        :type => "Infusion",
+        :water_grain_ratio => 1.25
+      })
+    end
   end
 end

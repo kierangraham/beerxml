@@ -8,7 +8,7 @@ class Beerxml::Model
   @plurals = {}
 
   def self.beerxml_name
-    name.split('::').last.upcase
+    name.split('::').last.underscore.upcase
   end
 
   def self.beerxml_plural_name
@@ -126,7 +126,11 @@ class Beerxml::Model
   def self.xml_attr_name(name)
     name.to_s.upcase
   end
+
+  def as_json
+    attributes
+  end
 end
 
-%w(amount_is_weight hop recipe fermentable yeast style misc).
+%w(amount_is_weight hop recipe fermentable yeast style misc mash mash_step).
   each { |f| require "beerxml/#{f}" }
