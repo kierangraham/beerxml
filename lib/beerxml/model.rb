@@ -1,5 +1,4 @@
 class Beerxml::Model
-  include DataMapper::Resource
   require 'beerxml/properties'
   include Beerxml::Properties
 

@@ -1,4 +1,6 @@
 class Beerxml::Style < Beerxml::Model
+  include DataMapper::Resource
+
   property :name, String, :required => true
   property :category, String, :required => true
   property :category_number, String, :required => true

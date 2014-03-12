@@ -17,11 +17,11 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
-  s.add_dependency "nokogiri", "~> 1.4.4"
-  s.add_dependency "dm-core", "~> 1.1.0"
-  s.add_dependency "dm-validations", "~> 1.1.0"
+  s.add_dependency "nokogiri"
+  s.add_dependency "dm-core"
+  s.add_dependency "dm-validations"
 
-  s.add_development_dependency "rspec", "~> 2.5"
-  s.add_development_dependency "rcov"
+  s.add_development_dependency "rspec"
+  s.add_development_dependency "simplecov"
   s.add_development_dependency "yard"
 end

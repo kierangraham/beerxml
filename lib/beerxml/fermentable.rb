@@ -1,4 +1,6 @@
 class Beerxml::Fermentable < Beerxml::Model
+  include DataMapper::Resource
+
   property :name, String, :required => true
   property :type, String, :set => ['Grain', 'Sugar', 'Extract', 'Dry Extract', 'Adjunct'], :required => true
   property :amount, Weight, :required => true

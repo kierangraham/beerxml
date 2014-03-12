@@ -15,3 +15,5 @@ RSpec.configure do |c|
     Nokogiri::XML(read_file(example))
   end
 end
+
+DataMapper.finalize

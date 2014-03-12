@@ -1,4 +1,6 @@
 class Beerxml::Hop < Beerxml::Model
+  include DataMapper::Resource
+
   property :name, String, :required => true
   property :alpha, Float, :required => true
   property :amount, Weight, :required => true
